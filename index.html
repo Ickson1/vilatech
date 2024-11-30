@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Site Responsivo com Tema</title>
+
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <button class="toggle-theme" onclick="toggleTheme()">Alternar Tema</button>
+    </nav>
+  </header>
+
+  <section id="inicio">
+    <h1>Bem-vindo ao nosso site!</h1>
+    <!-- <p>Esta é a seção inicial.</p> -->
+  </section>
+  
+
+
+  <section id="produtos">
+    <div class="section-header">
+      <!-- <h1>Nossos Produtos</h1>
+      <p>Veja nossa seleção especial de produtos.</p> -->
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="cy.jpeg" alt="Produto 1">
+        <h2>Produto 1</h2>
+        <p class="price">R$ 100,00</p>
+      </div>
+      <div class="product-card">
+        <img src="apple.jpeg" alt="Produto 2">
+        <h2>Produto 2</h2>
+        <p class="price">R$ 200,00</p>
+      </div>
+      <div class="product-card">
+        <img src="copos.jpeg" alt="Produto 3">
+        <h2>Produto 3</h2>
+        <p class="price">R$ 300,00</p>
+      </div>
+      <div class="product-card">
+        <img src="fonesbt.jpeg" alt="Produto 4">
+        <h2>Produto 4</h2>
+        <p class="price">R$ 400,00</p>
+      </div>
+      <div class="product-card">
+        <img src="caixinhasom.jpeg" alt="Produto 5">
+        <h2>Produto 5</h2>
+        <p class="price">R$ 500,00</p>
+      </div>
+      <div class="product-card">
+        <img src="tvbox.jpeg" alt="Produto 6">
+        <h2>Produto 6</h2>
+        <p class="price">R$ 600,00</p>
+      </div>
+      <div class="product-card">
+        <img src="URL_DA_IMAGEM_PRODUTO_7" alt="Produto 7">
+        <h2>Produto 7</h2>
+        <p class="price">R$ 700,00</p>
+      </div>
+      <div class="product-card">
+        <img src="URL_DA_IMAGEM_PRODUTO_8" alt="Produto 8">
+        <h2>Produto 8</h2>
+        <p class="price">R$ 800,00</p>
+      </div>
+      <div class="product-card">
+        <img src="URL_DA_IMAGEM_PRODUTO_9" alt="Produto 9">
+        <h2>Produto 9</h2>
+        <p class="price">R$ 900,00</p>
+      </div>
+      <div class="product-card">
+        <img src="URL_DA_IMAGEM_PRODUTO_10" alt="Produto 10">
+        <h2>Produto 10</h2>
+        <p class="price">R$ 1000,00</p>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+
+<section id="contato">
+    <h1>Contato</h1>
+    <p>Entre em contato conosco através do formulário abaixo!</p>
+</section>
+
+
+  <script>
+    // Função para alternar o tema
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
