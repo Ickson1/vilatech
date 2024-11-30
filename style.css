@@ -75,8 +75,7 @@ section {
 
 /* Estilo base para a seção #inicio */
 #inicio {
-  background-image: url('inicio.png'); /* Define a imagem de fundo */
-  background-size: cover; /* Faz a imagem preencher toda a seção */
+    background-size: cover; /* Faz a imagem preencher toda a seção */
   background-position: center; /* Centraliza a imagem */
   background-repeat: no-repeat; /* Evita repetição */
   height: 100vh; /* Faz a seção ocupar 100% da altura da tela */
@@ -341,3 +340,6 @@ body.dark-mode .product-card h2 {
 body.dark-mode .product-card .price {
   color: #aaa;
 }
+
+
+
