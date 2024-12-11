@@ -1,0 +1,245 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: #f9f9f9;
+}
+
+/* Estilos do cabeçalho */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(45deg, #000000, #05421d);
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 15px;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 15px;
+  border-radius: 20px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.toggle-theme {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.toggle-theme:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* Estilo da seção #inicio */
+#inicio {
+  background: linear-gradient(120deg, #26360175, #53750398);
+  color: #fff;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#inicio h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+#inicio p {
+  font-size: 1.2em;
+  animation: fadeIn 2.5s ease-in-out forwards;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo da seção Produtos */
+#produtos {
+  background: #f6f6f6;
+  color: #333;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+#produtos h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste para as imagens dentro dos cards */
+.product-card img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 250px;
+  background-color: #f9f9f9;
+}
+
+.product-card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.product-card h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-card .price {
+  font-size: 1.5em;
+  color: #6a11cb;
+  font-weight: bold;
+}
+
+.product-card .cta-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background: linear-gradient(45deg, #30cb11, #000000);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.product-card .cta-button:hover {
+  background: linear-gradient(45deg, #000000, #c4ff8e);
+  transform: scale(1.05);
+}
+
+/* Estilo da seção Contatos */
+#contato {
+  background: #f6f6f6;
+  color: #333;
+  padding: 50px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#contato h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+#contato p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .product-card {
+    flex: 1 1 calc(50% - 20px);
+  }
+
+  .carousel {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    flex: 1 1 100%;
+  }
+
+  .carousel {
+    width: 90%;
+  }
+
+  .carousel-button {
+    padding: 8px;
+  }
+}

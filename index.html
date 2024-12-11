@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Vila Tech</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+      background-color: #f9f9f9;
+    }
+
+    /* Estilos do cabeçalho */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(45deg, #000000, #05421d);
+      color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu {
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 15px;
+      border-radius: 20px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .menu a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    .toggle-theme {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 15px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .toggle-theme:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.1);
+    }
+
+    /* Estilo da seção #inicio */
+    #inicio {
+      background: linear-gradient(120deg, #26360175, #53750398);
+      color: #fff;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    #inicio h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    #inicio p {
+      font-size: 1.2em;
+      animation: fadeIn 2.5s ease-in-out forwards;
+    }
+
+    /* Animação de fade-in */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Carrossel no formato de celular */
+    .carousel {
+      position: relative;
+      width: 90%;
+      max-width: 400px;
+      height: 600px; /* Altura do "celular" */
+      overflow: hidden;
+      border: 16px solid #000; /* Borda externa do celular */
+      border-radius: 36px; /* Bordas arredondadas do celular */
+      background-color: #fff; /* Fundo do celular */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin: 20px auto;
+    }
+
+    .carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  flex: 0 0 100%; /* Faz cada item ocupar 100% da largura */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+    /* Botões do carrossel */
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-button.left {
+      left: 10px;
+    }
+
+    .carousel-button.right {
+      right: 10px;
+    }
+
+    /* Estilo da seção Produtos */
+    #produtos {
+      background: #f6f6f6;
+      color: #333;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    #produtos h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-card-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-card h2 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .product-card .price {
+      font-size: 1.5em;
+      color: #6a11cb;
+      font-weight: bold;
+    }
+
+    .product-card .cta-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
+      color: #fff;
+      background: linear-gradient(45deg, #30cb11, #000000);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .product-card .cta-button:hover {
+      background: linear-gradient(45deg, #000000, #c4ff8e);
+      transform: scale(1.05);
+    }
+
+    /* Estilo da seção Contatos */
+    #contato {
+      background: #f6f6f6;
+      color: #333;
+      padding: 50px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #contato h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #contato p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .product-card {
+        flex: 1 1 calc(50% - 20px);
+      }
+
+      .carousel {
+        width: 95%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-card {
+        flex: 1 1 100%;
+      }
+
+      .carousel {
+        width: 90%;
+      }
+
+      .carousel-button {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <!-- <button class="toggle-theme" onclick="toggleTheme()">Alternar Tema</button> -->
+    </nav>
+  </header>
+
+  <section id="inicio">
+    <h1>Bem-vindo ao nosso site!</h1>
+    <p>Explore nossos produtos e aproveite as melhores ofertas!</p>
+
+    <!-- Carrossel no formato de celular -->
+    <div class="carousel">
+      <div class="carousel-inner" id="carousel-inner">
+        <div class="carousel-item"><img src="cy.jpeg" alt="Imagem 1"></div>
+        <div class="carousel-item"><img src="tvbox.jpeg" alt="Imagem 2"></div>
+        <div class="carousel-item"><img src="copos.jpeg" alt="Imagem 3"></div>
+      </div>
+      <button class="carousel-button left" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="carousel-button right" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <section id="produtos">
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="img/cafestanley.jpeg" alt="Produto 1">
+        <div class="product-card-content">
+          <h2>Garrafa Termica Staley com Visor Digital</h2>
+          <p class="price">R$ 40,00</p>
+          <a href="#produto1" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/caixagrandecy.jpeg" alt="Produto 2">
+        <div class="product-card-content">
+          <h2>Caixa de Som Grande CY</h2>
+          <p class="price">R$ 150,00</p>
+          <a href="#produto2" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/caixasomalca.jpeg" alt="Produto 3">
+        <div class="product-card-content">
+          <h2>Caixa de Som Grande com LED</h2>
+          <p class="price">R$ 700,00</p>
+          <a href="#produto3" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/caixasomspeaker.jpeg" alt="Produto 4">
+        <div class="product-card-content">
+          <h2>Caixa de Som Grande Speaker 50W</h2>
+          <p class="price">R$ 230,00</p>
+          <a href="#produto4" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/caixasomretro.jpeg" alt="Produto 5">
+        <div class="product-card-content">
+          <h2>Caixinha de Som Retro/h2>
+          <p class="price">R$ 45,00</p>
+          <a href="#produto5" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/controleipega.jpeg" alt="Produto 6">
+        <div class="product-card-content">
+          <h2>Controle Ípega PG 9076 Bluetooth Gamepad para Android, TV</h2>
+          <p class="price">R$ 70,00</p>
+          <a href="#produto6" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/controleps3.jpeg" alt="Produto 67">
+        <div class="product-card-content">
+          <h2>Controle PS3</h2>
+          <p class="price">R$ 120,00</p>
+          <a href="#produto7" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/copao1200ml.jpeg" alt="Produto 8">
+        <div class="product-card-content">
+          <h2>Copão Stanley 1200ml</h2>
+          <p class="price">R$ 90,00</p>
+          <a href="#produto8" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/copostanley.jpeg" alt="Produto 9">
+        <div class="product-card-content">
+          <h2>Copo Stanley</h2>
+          <p class="price">R$ 29,99</p>
+          <a href="#produto9" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/foneapple.jpeg" alt="Produto 10">
+        <div class="product-card-content">
+          <h2>AirPods Pro</h2>
+          <p class="price">R$ 120,00</p>
+          <a href="#produto10" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/fonebt.jpeg" alt="Produto 11">
+        <div class="product-card-content">
+          <h2>Fone de Ouvido P628 BT </h2>
+          <p class="price">R$ 90,00</p>
+          <a href="#produto11" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/fonem10.jpeg" alt="Produto 12">
+        <div class="product-card-content">
+          <h2>Fone de Ouvido M10</h2>
+          <p class="price">R$ 50,00</p>
+          <a href="#produto12" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/lanternaled.jpeg" alt="Produto 13">
+        <div class="product-card-content">
+          <h2>Lanterna LED</h2>
+          <p class="price">R$ 60,00</p>
+          <a href="#produto13" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/longnek.jpeg" alt="Produto 14">
+        <div class="product-card-content">
+          <h2>Copo Stanley Longneck</h2>
+          <p class="price">R$ 30,00</p>
+          <a href="#produto14" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/minegamerduo.jpeg" alt="Produto 15">
+        <div class="product-card-content">
+          <h2>Mini Game Box Portátil DUO</h2>
+          <p class="price">R$ 90,00</p>
+          <a href="#produto15" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/minicaixacy.jpeg" alt="Produto 16">
+        <div class="product-card-content">
+          <h2>Mini Caixa de Som CY</h2>
+          <p class="price">R$ 80,00</p>
+          <a href="#produto16" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/minicaixasom.jpeg" alt="Produto 17">
+        <div class="product-card-content">
+          <h2>Caixa de Som LEHMOX</h2>
+          <p class="price">R$ 25,00</p>
+          <a href="#produto17" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/minicaixasomalca.jpeg" alt="Produto 18">
+        <div class="product-card-content">
+          <h2>Caixa de Som Pequena com LED</h2>
+          <p class="price">R$ 50,00</p>
+          <a href="#produto18" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/minigamer.jpeg" alt="Produto 19">
+        <div class="product-card-content">
+          <h2>Mini Game Box Portátil</h2>
+          <p class="price">R$ 60,00</p>
+          <a href="#produto19" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/stanleyamericano.jpeg" alt="Produto 20">
+        <div class="product-card-content">
+          <h2>Mini Copo Stanley 200ml</h2>
+          <p class="price">R$ 20,00</p>
+          <a href="#produto20" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img/tvbox.jpeg" alt="Produto 21">
+        <div class="product-card-content">
+          <h2>TV Box MXQpro 4K</h2>
+          <p class="price">R$ 150,00</p>
+          <a href="#produto21" class="cta-button">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nova seção Contatos -->
+  <section id="contato">
+    <h1>Contato</h1>
+    <p>Entre em contato conosco através do e-mail: <strong>vilatech2@gmail.com</strong></p>
+    <p>Ou ligue para: <strong>(61) 99967-8529</strong></p>
+  </section>
+
+  <script>
+    let currentSlide = 0;
+
+    function moveSlide(direction) {
+      const slides = document.querySelectorAll('.carousel-item');
+      const totalSlides = slides.length;
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+      const carouselInner = document.getElementById('carousel-inner');
+      carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
